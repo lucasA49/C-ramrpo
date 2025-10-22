@@ -1,97 +1,111 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { FiMenu } from "react-icons/fi";
+import logo from "/logo.jpg"; // adapte le chemin vers ton logo
 
 const Header = () => {
-  const [open, setOpen] = useState(false);
-
-  const navLinks = [
-    { name: "Accueil", path: "/" },
-    { name: "Services", path: "/services" },
-    { name: "Réalisations", path: "/realisations" },
-    { name: "Contact", path: "/contact" },
-  ];
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-lg shadow-sm z-50">
-      <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+    <header className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
         {/* Logo */}
-        <NavLink
-          to="/"
-          className="text-2xl font-bold text-green-600 tracking-tight"
-          onClick={() => setOpen(false)}
-        >
-          Céram Pro
+        <NavLink to="/" className="flex items-center">
+          <img
+            src={logo}
+            alt="Logo Céram Pro"
+            className="h-13 w-auto transition-transform duration-300 hover:scale-105"
+          />
         </NavLink>
 
-        {/* Menu desktop */}
-        <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <li key={link.path}>
-              <NavLink
-                to={link.path}
-                className={({ isActive }) =>
-                  `font-medium transition-colors duration-200 ${
-                    isActive ? "text-green-600" : "text-gray-800 hover:text-green-600"
-                  }`
-                }
-              >
-                {link.name}
-              </NavLink>
-            </li>
-          ))}
-          <li>
-            <NavLink
-              to="/devis"
-              className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-5 rounded-full transition-all duration-300"
-            >
-              Devis Gratuit
-            </NavLink>
-          </li>
-        </ul>
+        {/* Menu Desktop */}
+        <nav className="hidden md:flex space-x-8">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive
+                ? "text-teal-600 font-semibold"
+                : "text-gray-700 hover:text-teal-600 transition"
+            }
+          >
+            Accueil
+          </NavLink>
+          <NavLink
+            to="/services"
+            className={({ isActive }) =>
+              isActive
+                ? "text-teal-600 font-semibold"
+                : "text-gray-700 hover:text-teal-600 transition"
+            }
+          >
+            Services
+          </NavLink>
+          <NavLink
+            to="/realisations"
+            className={({ isActive }) =>
+              isActive
+                ? "text-teal-600 font-semibold"
+                : "text-gray-700 hover:text-teal-600 transition"
+            }
+          >
+            Réalisations
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              isActive
+                ? "text-teal-600 font-semibold"
+                : "text-gray-700 hover:text-teal-600 transition"
+            }
+          >
+            Contact
+          </NavLink>
+        </nav>
 
-        {/* Menu burger mobile */}
+        {/* Bouton Menu Mobile */}
         <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden text-gray-700 hover:text-green-600 transition"
+          className="md:hidden text-teal-600 focus:outline-none"
+          onClick={() => setIsOpen(!isOpen)}
         >
-          {open ? <X size={26} /> : <Menu size={26} />}
+          <FiMenu className="w-6 h-6" />
         </button>
+      </div>
 
-        {/* Menu mobile */}
-        {open && (
-          <div className="absolute top-[68px] left-0 w-full bg-white shadow-md border-t border-gray-100 md:hidden animate-fade-in-down">
-            <ul className="flex flex-col gap-3 py-4 px-6">
-              {navLinks.map((link) => (
-                <li key={link.path}>
-                  <NavLink
-                    to={link.path}
-                    onClick={() => setOpen(false)}
-                    className={({ isActive }) =>
-                      `block py-2 font-medium ${
-                        isActive
-                          ? "text-green-600"
-                          : "text-gray-800 hover:text-green-600"
-                      }`
-                    }
-                  >
-                    {link.name}
-                  </NavLink>
-                </li>
-              ))}
-              <li>
-                <NavLink
-                  to="/devis"
-                  onClick={() => setOpen(false)}
-                  className="block text-center bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-full transition"
-                >
-                  Devis Gratuit
-                </NavLink>
-              </li>
-            </ul>
-          </div>
-        )}
-      </nav>
+      {/* Menu Mobile */}
+      {isOpen && (
+        <div className="md:hidden bg-white border-t border-gray-200">
+          <nav className="flex flex-col space-y-4 p-4">
+            <NavLink
+              to="/"
+              className="text-gray-700 hover:text-teal-600"
+              onClick={() => setIsOpen(false)}
+            >
+              Accueil
+            </NavLink>
+            <NavLink
+              to="/services"
+              className="text-gray-700 hover:text-teal-600"
+              onClick={() => setIsOpen(false)}
+            >
+              Services
+            </NavLink>
+            <NavLink
+              to="/realisations"
+              className="text-gray-700 hover:text-teal-600"
+              onClick={() => setIsOpen(false)}
+            >
+              Réalisations
+            </NavLink>
+            <NavLink
+              to="/contact"
+              className="text-gray-700 hover:text-teal-600"
+              onClick={() => setIsOpen(false)}
+            >
+              Contact
+            </NavLink>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };

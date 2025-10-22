@@ -1,16 +1,15 @@
-# React + Vite
+✅ Recommandations d’utilisation (priorités UX)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Corps de texte : Charbon #243033 sur fond #FBFCFD → très lisible.
 
-Currently, two official plugins are available:
+Titres importants : #243033 ou #3CB6A3 (pour accent).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Bouton principal (CTA) : fond #FF7A45 + texte blanc (fort contraste). Sur hover → foncer légèrement (#ff6230).
 
-## React Compiler
+Bouton secondaire (moins prioritaire) : fond blanc bordé teal #3CB6A3, texte teal ou charcoal.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Sections alternées : utiliser #FBFCFD (page) et blocs en #F3F6F7 pour rythmer la lecture.
 
-## Expanding the ESLint configuration
+Icônes/illustrations : utiliser le teal principal #74D3C1 et charbon pour cohérence.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Ombres et depth : ombre douce rgba(36,48,51,0.06).
